@@ -1,18 +1,13 @@
-import React, { FC } from "react";
 import styled from "styled-components";
 
-export const App: FC = () => {
+export const App = () => {
   return (
-    <SComponentContainer>
-      <SText>メロン組へようこそ</SText>
-    </SComponentContainer>
+    <SContainer>
+      <div>メロン組へようこそ！</div>
+    </SContainer>
   );
 };
 
-const SComponentContainer = styled.div`
+const SContainer = styled.div`
   text-align: center;
-`;
-
-const SText = styled.div`
-  font-size: 24px;
 `;
