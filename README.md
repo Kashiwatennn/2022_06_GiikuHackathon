@@ -68,5 +68,7 @@ vscode
 
 # 参考文献
 
-
 [create-react-app の使い方](https://qiita.com/sanogemaru/items/05c2e9381d6ba2d9fccf)
+
+# 議事録
+[議事録（notion)](https://verbena-puck-0c7.notion.site/eb6ab653ac9b43f8aecd48c534dd0402)
