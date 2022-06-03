@@ -52,6 +52,9 @@ vscode
 - default エクスポートしない
 - 関数コンポーネントを使う
 
+# ディレクトリ構成
+''
+
 # その他注意点など
 
 - React v18からVFCが非推奨になりFCにchildrenが暗黙的に追加されなくなった
@@ -81,6 +84,8 @@ vscode
 # 参考文献
 
 [create-react-app の使い方](https://qiita.com/sanogemaru/items/05c2e9381d6ba2d9fccf)
+[react-routerv6について](https://zenn.dev/khale/articles/react-router-update-v6)
+[react-routerv6とv5の違い](https://dev.classmethod.jp/articles/react-router-5to6/)
 
 # 議事録
 [議事録（notion)](https://verbena-puck-0c7.notion.site/eb6ab653ac9b43f8aecd48c534dd0402)
