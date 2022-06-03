@@ -17,10 +17,27 @@ vscode
 
 # 最初の立ち上げ方法
 
-1. リポジトリのルートディレクトリに移動 
-2. `npm start` 
+1. `git clone git@github.com:it-tsumugi/melon-app.git`
+2. リポジトリのルートディレクトリに移動 
+3. `npm install`
+4. `npm start` 
 
 # 開発の流れ
+
+1. `git pull origin main`
+2. `git branch issueの番号`
+3. `git switch 対象ブランチ`
+4. 変更作業を行う
+5. `git add .`(カレントディレクトリより下しかステージされないので注意)
+6. `git commit -m '作業内容'`
+7. `git push origin main`(エラーが出たらslackに投げてください)
+
+## たまに使うコマンド
+- git merge
+- git revert
+- git checkout
+- git stack
+- git log
 
 # コーディング規則
 
@@ -29,7 +46,9 @@ vscode
 
 # おすすめ vscode 拡張機能
 
--
+- Auto Close Tag
+- Auto Import
+- Auto Import - ES6,TS,JSX,TSX
 
 # 参考文献
 
