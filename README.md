@@ -12,7 +12,8 @@ react,typescript,styled-components,chakra ui,firebase
 
 # 推奨環境
 
-nodejs v14.17.0
+nodejs v18.3.0
+
 vscode
 
 # 最初の立ち上げ方法
