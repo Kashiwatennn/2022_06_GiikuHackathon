@@ -8,7 +8,7 @@
 
 # 使用技術（暫定）
 
-react,typescript,styled-components,chakra ui,firebase,eslint,prettier
+react,typescript,styled-components,chakra ui,firebase
 
 # 推奨環境
 
@@ -49,8 +49,23 @@ vscode
 - Auto Close Tag
 - Auto Import
 - Auto Import - ES6,TS,JSX,TSX
+- Auto Rename Tag
+- ESLint
+- GitHub Pull Requests and Issues
+- indent-rainbow
+- Prettier
+- vscode-styked-components
+
+# 知っておくと開発が楽かも
+
+- react
+- react-router
+- typescript
+- eslint
+- prettier
+- firebase
 
 # 参考文献
 
-create-react-app の使い方
-https://qiita.com/sanogemaru/items/05c2e9381d6ba2d9fccf
+
+[create-react-app の使い方](https://qiita.com/sanogemaru/items/05c2e9381d6ba2d9fccf)
