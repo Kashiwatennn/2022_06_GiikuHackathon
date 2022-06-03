@@ -1,13 +1,5 @@
-import styled from "styled-components";
+import { ComponentRouter } from "./router/ComponentRouter";
 
 export const App = () => {
-  return (
-    <SContainer>
-      <div>メロン組へようこそ！</div>
-    </SContainer>
-  );
+  return <ComponentRouter />;
 };
-
-const SContainer = styled.div`
-  text-align: center;
-`;
