@@ -10,6 +10,13 @@
 
 react,typescript,styled-components,chakra ui,firebase
 
+# バージョン
+
+React v18.1
+
+React Router v6.3
+
+
 # 推奨環境
 
 nodejs v18.3.0
@@ -44,6 +51,11 @@ vscode
 
 - default エクスポートしない
 - 関数コンポーネントを使う
+
+# その他注意点など
+
+- React v18からVFCが非推奨になりFCにchildrenが暗黙的に追加されなくなった
+- React Router v6 はかなり破壊的な変更があるので注意
 
 # おすすめ vscode 拡張機能
 
