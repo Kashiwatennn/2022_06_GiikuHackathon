@@ -10,18 +10,6 @@ import { AddMail } from "../components/pages/AddMail";
 import { AddServise } from "../components/pages/AddService";
 
 export const ComponentRouter: FC = () => {
-  const auth = getAuth();
-  const { isLogin, setIsLogin } = useAuthContext();
-
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setIsLogin(true);
-    } else {
-      setIsLogin(false);
-    }
-    console.log("isLogin:" + isLogin);
-  });
-
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>

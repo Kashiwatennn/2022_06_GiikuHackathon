@@ -2,15 +2,18 @@ import styled from "styled-components";
 import { SetInitialState } from "./components/utility/SetInitialState";
 import { ComponentRouter } from "./router/ComponentRouter";
 import { AuthProvider } from "./store/AuthProvider";
+import { UidProvider } from "./store/UidProvider";
 
 export const App = () => {
   return (
     <AuthProvider>
-      <SComponentContainer>
-        <SetInitialState>
-          <ComponentRouter />
-        </SetInitialState>
-      </SComponentContainer>
+      <UidProvider>
+        <SComponentContainer>
+          <SetInitialState>
+            <ComponentRouter />
+          </SetInitialState>
+        </SComponentContainer>
+      </UidProvider>
     </AuthProvider>
   );
 };
