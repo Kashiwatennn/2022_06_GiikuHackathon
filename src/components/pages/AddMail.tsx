@@ -1,4 +1,4 @@
-import { collection, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { FC, useState } from "react";
 import styled from "styled-components";
 import { db } from "../../firebase";
@@ -22,8 +22,8 @@ export const AddMail: FC = () => {
   const data = {
     emails: {
       0: {
-        email: email,
-        0: service,
+        0: email,
+        1: service,
       },
     },
   };
