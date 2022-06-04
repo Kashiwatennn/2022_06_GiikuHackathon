@@ -18,7 +18,11 @@ const login = (props: propsType) => {
   signInWithPopup(auth, provider)
     .then((result: UserCredential) => {
       console.log("Googleアカウントでログインしました。");
+<<<<<<< Updated upstream
       console.log(result.user.uid);
+=======
+      console.log(result.user.email);
+>>>>>>> Stashed changes
       navigate(pathData.home);
     })
     .catch((error) => {
@@ -42,6 +46,7 @@ export const Header: FC = () => {
 
   return (
     <SContainer>
+<<<<<<< Updated upstream
       <div>
         <SLink to={pathData.top}>Top</SLink>
         <SLink to={pathData.home}>Home</SLink>
@@ -62,6 +67,24 @@ export const Header: FC = () => {
           </DefaultButton>
         )}
       </div>
+=======
+      <SLink to={pathData.top}>Top</SLink>
+      <SLink to={pathData.home}>Home</SLink>
+      {isLogin || (
+        <DefaultButton onClick={() => login({ navigate })}>
+          ログイン
+        </DefaultButton>
+      )}
+      {isLogin && (
+        <DefaultButton
+          onClick={() => {
+            logout();
+          }}
+        >
+          ログアウト
+        </DefaultButton>
+      )}
+>>>>>>> Stashed changes
     </SContainer>
   );
 };
