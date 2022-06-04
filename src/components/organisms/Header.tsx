@@ -61,8 +61,8 @@ export const Header: FC = () => {
 const SContainer = styled.div`
   background-color: green;
   display: flex;
-  //ヘッダーのボタン左右->"均等配置(左右も開ける)"
-  justify-content: space-around;
+  //ヘッダーのボタン左右->"均等配置(左右は開けない)"
+  justify-content: space-between;
   //ヘッダーのボタン上下->”真ん中”
   align-items: center;
   gap: 10px;
