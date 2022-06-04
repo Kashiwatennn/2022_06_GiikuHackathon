@@ -13,19 +13,6 @@ type propsType = {
 
 export const DataProvider: FC<propsType> = (props) => {
   const { children } = props;
-  const temp = {
-    emails: {
-      0: {
-        0: "email",
-        1: "service",
-      },
-      1: {
-        0: "email",
-        1: "service",
-      },
-    },
-  };
-
   const [data, setData] = useState<any>([]);
 
   return (

@@ -2,7 +2,6 @@ import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { pathData } from "../../assets/pathData";
-import { useDataContext } from "../../store/DataProvider";
 import { DefaultButton } from "../atoms/DefaultButton";
 
 type propsType = {
@@ -12,7 +11,6 @@ type propsType = {
 export const Email: FC<propsType> = (props) => {
   const { data } = props;
   const navigate = useNavigate();
-  const contentsArray = ["test.test", "Amazon", "youtube", "apex"];
   return (
     <SElement>
       <SFlexContainer>
@@ -25,19 +23,11 @@ export const Email: FC<propsType> = (props) => {
             return (
               <SFlexContainer key={index}>
                 <div>{item}</div>
-                <DefaultButton>削除</DefaultButton>
               </SFlexContainer>
             );
           }
         })}
       </SService>
-      <DefaultButton
-        onClick={() => {
-          navigate(pathData.addService);
-        }}
-      >
-        サービスの追加
-      </DefaultButton>
     </SElement>
   );
 };

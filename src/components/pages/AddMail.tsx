@@ -1,39 +1,47 @@
-import { doc, setDoc } from "firebase/firestore";
+import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { FC, useState } from "react";
 import styled from "styled-components";
 import { db } from "../../firebase";
 import { useUidContext } from "../../store/UidProvider";
 import { useNavigate } from "react-router-dom";
-import { NavigateFunction } from "react-router-dom";
 import { pathData } from "../../assets/pathData";
-
-type addUserProps = {
-  email: string;
-  service: string;
-  navigate: NavigateFunction;
-};
+import { useDataContext } from "../../store/DataProvider";
+import { useIsCompleteContext } from "../../store/IsCompleteProvidr";
 
 export const AddMail: FC = () => {
   const [email, setEmail] = useState("");
-  const [service, setService] = useState("");
+  const [service1, setService1] = useState("");
+  const [service2, setService2] = useState("");
+  const [service3, setService3] = useState("");
   const { uid } = useUidContext();
+  const { isComplete } = useIsCompleteContext();
+  const { data } = useDataContext();
   const navigate = useNavigate();
+  // console.log(data);
 
-  const data = {
-    emails: {
-      0: {
-        0: email,
-        1: service,
-      },
-    },
-  };
-
-  const addMail = async (props: addUserProps) => {
+  const addMail = async () => {
+    const querySnapshot = await getDocs(collection(db, "users"));
+    let or_data: any = {};
+    querySnapshot.forEach((doc) => {
+      or_data = doc.data();
+    });
     const path = "users/" + uid;
-
+    let temp = or_data;
+    const num = data.length;
+    if (isComplete) {
+      temp.emails = Object.assign(or_data.emails, {
+        [num]: {
+          0: email,
+          1: service1,
+          2: service2,
+          3: service3,
+        },
+      });
+    }
+    console.log(or_data);
     try {
       const refEmails = doc(db, path);
-      await setDoc(refEmails, data);
+      await setDoc(refEmails, temp);
       window.alert("追加しました");
       navigate(pathData.home);
     } catch (e) {
@@ -46,12 +54,12 @@ export const AddMail: FC = () => {
       <SText>メールアドレスを入力してください</SText>
       <input onChange={(e) => setEmail(e.target.value)} />
       <SText>
-        メールアドレスを使用しているサービスを入力してください（登録時は１つのみ選択）
+        メールアドレスを使用しているサービスを入力してください（最大３つまで）
       </SText>
-      <input onChange={(e) => setService(e.target.value)} />
-      <button onClick={() => addMail({ email, service, navigate })}>
-        追加
-      </button>
+      <input onChange={(e) => setService1(e.target.value)} />
+      <input onChange={(e) => setService2(e.target.value)} />
+      <input onChange={(e) => setService3(e.target.value)} />
+      <button onClick={() => addMail()}>追加</button>
     </SContainer>
   );
 };

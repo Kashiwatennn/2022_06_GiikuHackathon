@@ -20,18 +20,18 @@ export const SetInitialState: FC<propsType> = ({ children }) => {
   const getData = async () => {
     const querySnapshot = await getDocs(collection(db, "users"));
     querySnapshot.forEach((doc) => {
-      const data = {
-        emails: {
-          0: {
-            0: "email",
-            1: "service",
-          },
-          1: {
-            0: "email",
-            1: "service",
-          },
-        },
-      };
+      // const data = {
+      //   emails: {
+      //     0: {
+      //       0: "email",
+      //       1: "service",
+      //     },
+      //     1: {
+      //       0: "email",
+      //       1: "service",
+      //     },
+      //   },
+      // };
 
       const temp: any = doc.data();
       const temp1 = Object.entries(temp.emails);

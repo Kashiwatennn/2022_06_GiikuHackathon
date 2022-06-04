@@ -13,19 +13,6 @@ type propsType = {
 
 export const IsCompleteProvider: FC<propsType> = (props) => {
   const { children } = props;
-  const temp = {
-    emails: {
-      0: {
-        0: "email",
-        1: "service",
-      },
-      1: {
-        0: "email",
-        1: "service",
-      },
-    },
-  };
-
   const [isComplete, setIsComplete] = useState<boolean>(false);
 
   return (
