@@ -38,8 +38,11 @@ export const Header: FC = () => {
   const navigate = useNavigate();
   return (
     <SContainer>
+      <div>
       <SLink to={pathData.top}>Top</SLink>
       <SLink to={pathData.home}>Home</SLink>
+      </div>
+      <div>
       <DefaultButton onClick={() => login({ navigate })}>
         ログイン
       </DefaultButton>
@@ -50,6 +53,7 @@ export const Header: FC = () => {
       >
         ログアウト
       </DefaultButton>
+      </div>
     </SContainer>
   );
 };
@@ -57,6 +61,10 @@ export const Header: FC = () => {
 const SContainer = styled.div`
   background-color: green;
   display: flex;
+  //ヘッダーのボタン左右->"均等配置(左右も開ける)"
+  justify-content: space-around;
+  //ヘッダーのボタン上下->”真ん中”
+  align-items: center;
   gap: 10px;
   height: 40px;
 `;
