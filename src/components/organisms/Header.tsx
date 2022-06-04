@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { pathData } from "../../assets/pathData";
 import { DefaultButton } from "../atoms/DefaultButton";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, signOut } from "firebase/auth";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { auth, provider } from "../../firebase";
 
@@ -11,7 +11,7 @@ type propsType = {
   navigate: NavigateFunction;
 };
 
-const onClick = (props: propsType) => {
+const login = (props: propsType) => {
   const { navigate } = props;
 
   signInWithPopup(auth, provider)
@@ -24,16 +24,32 @@ const onClick = (props: propsType) => {
     });
 };
 
+const logout = () => {
+  signOut(auth)
+    .then(() => {
+      console.log("ログアウトしました");
+    })
+    .catch((error) => {
+      console.log("ログアウトに失敗しました");
+    });
+};
+
 export const Header: FC = () => {
   const navigate = useNavigate();
   return (
     <SContainer>
       <SLink to={pathData.top}>Top</SLink>
       <SLink to={pathData.home}>Home</SLink>
-      <DefaultButton onClick={() => onClick({ navigate })}>
+      <DefaultButton onClick={() => login({ navigate })}>
         ログイン
       </DefaultButton>
-      <DefaultButton>ログアウト</DefaultButton>
+      <DefaultButton
+        onClick={() => {
+          logout();
+        }}
+      >
+        ログアウト
+      </DefaultButton>
     </SContainer>
   );
 };

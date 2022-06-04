@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { DefaultButton } from "../atoms/DefaultButton";
+import { useNavigate } from "react-router-dom";
+import { pathData } from "../../assets/pathData";
 
 export const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <SContainer>
       {/* 
@@ -9,72 +13,81 @@ export const Home = () => {
         めんどくさいのでdivで全部書いてますが意味はありません
       */}
       <SElement>
-        <SMail>メールアドレス1</SMail>
+        <SFlexContainer>
+          <SMail>メールアドレス1</SMail>
+          <DefaultButton>削除</DefaultButton>
+        </SFlexContainer>
         <SService>
-          <div>Amazon</div>
-          <div>youtube(観賞用)</div>
-          <div>apex(メイン垢)</div>
+          <SFlexContainer>
+            <div>Amazon</div>
+            <DefaultButton>削除</DefaultButton>
+          </SFlexContainer>
+          <SFlexContainer>
+            <div>youtube(観賞用)</div>
+            <DefaultButton>削除</DefaultButton>
+          </SFlexContainer>
+          <SFlexContainer>
+            <div>apex(メイン垢)</div>
+            <DefaultButton>削除</DefaultButton>
+          </SFlexContainer>
         </SService>
-        <DefaultButton>サービスの追加</DefaultButton>
+        <DefaultButton
+          onClick={() => {
+            navigate(pathData.addService);
+          }}
+        >
+          サービスの追加
+        </DefaultButton>
       </SElement>
 
       <SElement>
-        <SMail>メールアドレス2</SMail>
+        <SFlexContainer>
+          <SMail>メールアドレス2</SMail>
+          <DefaultButton>削除</DefaultButton>
+        </SFlexContainer>
         <SService>
-          <div>moodle</div>
-          <div>slack(大学用)</div>
-          <div>サポーターズ</div>
+          <SFlexContainer>
+            <div>moodle</div>
+            <DefaultButton>削除</DefaultButton>
+          </SFlexContainer>
+          <SFlexContainer>
+            <div>slack(学校用)</div>
+            <DefaultButton>削除</DefaultButton>
+          </SFlexContainer>
+          <SFlexContainer>
+            <div>サポーターズ</div>
+            <DefaultButton>削除</DefaultButton>
+          </SFlexContainer>
         </SService>
-        <DefaultButton>サービスの追加</DefaultButton>
+        <DefaultButton
+          onClick={() => {
+            navigate(pathData.addMail);
+          }}
+        >
+          サービスの追加
+        </DefaultButton>
       </SElement>
 
-      <SElement>
-        <SMail>メールアドレス1</SMail>
-        <SService>
-          <div>Amazon</div>
-          <div>youtube(観賞用)</div>
-          <div>apex(メイン垢)</div>
-        </SService>
-        <DefaultButton>サービスの追加</DefaultButton>
-      </SElement>
-
-      <SElement>
-        <SMail>メールアドレス2</SMail>
-        <SService>
-          <div>moodle</div>
-          <div>slack(大学用)</div>
-          <div>サポーターズ</div>
-        </SService>
-        <DefaultButton>サービスの追加</DefaultButton>
-      </SElement>
-
-      <SElement>
-        <SMail>メールアドレス1</SMail>
-        <SService>
-          <div>Amazon</div>
-          <div>youtube(観賞用)</div>
-          <div>apex(メイン垢)</div>
-        </SService>
-        <DefaultButton>サービスの追加</DefaultButton>
-      </SElement>
-
-      <SElement>
-        <SMail>メールアドレス2</SMail>
-        <SService>
-          <div>moodle</div>
-          <div>slack(大学用)</div>
-          <div>サポーターズ</div>
-        </SService>
-        <DefaultButton>サービスの追加</DefaultButton>
-      </SElement>
-
-      <br />
-      <DefaultButton>メールアドレスの追加</DefaultButton>
+      <DefaultButton
+        onClick={() => {
+          navigate(pathData.addMail);
+        }}
+      >
+        メールアドレスの追加
+      </DefaultButton>
     </SContainer>
   );
 };
 
-const SContainer = styled.div``;
+const SContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+`;
+
+const SFlexContainer = styled.div`
+  display: flex;
+`;
 
 const SService = styled.div`
   margin-left: 30px;

@@ -1,5 +1,6 @@
 export const pathData = {
   top: "/",
-  login: "/login",
   home: "/home",
+  addMail: "/addmail",
+  addService: "/addService",
 };
