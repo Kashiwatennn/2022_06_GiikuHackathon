@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import { auth } from "../../firebase";
 import { useAuthContext } from "../../store/AuthProvider";
 import { useUidContext } from "../../store/UidProvider";
@@ -9,7 +9,6 @@ type propsType = {
 };
 
 export const SetInitialState: FC<propsType> = ({ children }) => {
-  const user = auth.currentUser;
   const { uid, setUid } = useUidContext();
   const { isLogin, setIsLogin } = useAuthContext();
 

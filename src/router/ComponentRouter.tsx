@@ -4,8 +4,6 @@ import { pathData } from "../assets/pathData";
 import { Top } from "../components/pages/Top";
 import { Home } from "../components/pages/Home";
 import { DefaultLayout } from "../components/templates/DefaultLayout";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useAuthContext } from "../store/AuthProvider";
 import { AddMail } from "../components/pages/AddMail";
 import { AddServise } from "../components/pages/AddService";
 
