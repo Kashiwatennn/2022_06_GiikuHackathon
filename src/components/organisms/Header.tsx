@@ -8,6 +8,7 @@ import { NavigateFunction, useNavigate } from "react-router-dom";
 import { auth, provider } from "../../firebase";
 import { useAuthContext } from "../../store/AuthProvider";
 import { useUidContext } from "../../store/UidProvider";
+import { useDataContext } from "../../store/DataProvider";
 
 type loginProps = {
   navigate: NavigateFunction;
@@ -45,13 +46,14 @@ const logout = (props: logoutProps) => {
 export const Header: FC = () => {
   const navigate = useNavigate();
   const { isLogin } = useAuthContext();
+  const { setData } = useDataContext();
   const { setUid } = useUidContext();
 
   return (
     <SContainer>
       <div>
         <SLink to={pathData.top}>Top</SLink>
-        <SLink to={pathData.home}>Home</SLink>
+        {isLogin && <SLink to={pathData.home}>Home</SLink>}
       </div>
       <div>
         {isLogin || (
@@ -63,6 +65,8 @@ export const Header: FC = () => {
           <DefaultButton
             onClick={() => {
               logout({ setUid });
+              setData({});
+              navigate(pathData.top);
             }}
           >
             ログアウト

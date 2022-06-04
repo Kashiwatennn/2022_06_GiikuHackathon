@@ -39,11 +39,7 @@ export const Top = () => {
 
   return (
     <>
-      <div>Topページです</div>
-      <button onClick={() => addUser()}>ユーザーの追加</button>
-      <button onClick={() => getUser()}>ユーザーの取得</button>
-      <button onClick={() => deleteUser()}>ユーザーの削除</button>
-      <button onClick={() => console.log(uid)}>uidの表示</button>
+      <div>Melon Memoryへようこそ！</div>
     </>
   );
 };

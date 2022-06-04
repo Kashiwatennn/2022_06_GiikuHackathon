@@ -6,7 +6,6 @@ import { useUidContext } from "../../store/UidProvider";
 import { useNavigate } from "react-router-dom";
 import { pathData } from "../../assets/pathData";
 import { useDataContext } from "../../store/DataProvider";
-import { useIsCompleteContext } from "../../store/IsCompleteProvidr";
 
 export const AddMail: FC = () => {
   const [email, setEmail] = useState("");
@@ -14,10 +13,8 @@ export const AddMail: FC = () => {
   const [service2, setService2] = useState("");
   const [service3, setService3] = useState("");
   const { uid } = useUidContext();
-  const { isComplete } = useIsCompleteContext();
   const { data } = useDataContext();
   const navigate = useNavigate();
-  // console.log(data);
 
   const addMail = async () => {
     const querySnapshot = await getDocs(collection(db, "users"));
@@ -28,16 +25,14 @@ export const AddMail: FC = () => {
     const path = "users/" + uid;
     let temp = or_data;
     const num = data.length;
-    if (isComplete) {
-      temp.emails = Object.assign(or_data.emails, {
-        [num]: {
-          0: email,
-          1: service1,
-          2: service2,
-          3: service3,
-        },
-      });
-    }
+    temp.emails = Object.assign(or_data.emails, {
+      [num]: {
+        0: email,
+        1: service1,
+        2: service2,
+        3: service3,
+      },
+    });
     console.log(or_data);
     try {
       const refEmails = doc(db, path);

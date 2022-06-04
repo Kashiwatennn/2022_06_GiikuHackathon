@@ -40,7 +40,7 @@ export const Home = () => {
     return (
       <SContainer>
         {data.map((item: any, index: number) => (
-          <Email data={item} key={index} />
+          <Email data={item} key={index} id={index} />
         ))}
         <DefaultButton
           onClick={() => {
