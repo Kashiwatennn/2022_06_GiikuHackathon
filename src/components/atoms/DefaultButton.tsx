@@ -11,13 +11,14 @@ export const DefaultButton = styled.button`
     color:#FFFFFF;
     font-size:12px;
     font-weight:bold;
-    border-radius:26px;
-    -webkit-border-radius:26px;
-    -moz-border-radius:26px;
+    border-radius:15px;
+    -webkit-border-radius:15px;
+    -moz-border-radius:15px;
     ;
 
     /*button hover*/
     &:hover{
+    border: none;
     background:#ddb91a;
     color:#FFFFFF;
     margin-left:3px;
