@@ -1,16 +1,15 @@
 import styled from "styled-components";
+import { SetInitialState } from "./components/utility/SetInitialState";
 import { ComponentRouter } from "./router/ComponentRouter";
 import { AuthProvider } from "./store/AuthProvider";
-
-// import { initializeApp } from "firebase/app";
-// import { firebaseConfig } from "./firebase";
-// initializeApp(firebaseConfig);
 
 export const App = () => {
   return (
     <AuthProvider>
       <SComponentContainer>
-        <ComponentRouter />
+        <SetInitialState>
+          <ComponentRouter />
+        </SetInitialState>
       </SComponentContainer>
     </AuthProvider>
   );

@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { pathData } from "../../assets/pathData";
 import { DefaultButton } from "../atoms/DefaultButton";
-import { signInWithPopup, signOut } from "firebase/auth";
+import { signInWithPopup, signOut, UserCredential } from "firebase/auth";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { auth, provider } from "../../firebase";
+import { useAuthContext } from "../../store/AuthProvider";
 
 type propsType = {
   navigate: NavigateFunction;
@@ -15,8 +16,9 @@ const login = (props: propsType) => {
   const { navigate } = props;
 
   signInWithPopup(auth, provider)
-    .then((result) => {
+    .then((result: UserCredential) => {
       console.log("Googleアカウントでログインしました。");
+      console.log(result.user.uid);
       navigate(pathData.home);
     })
     .catch((error) => {
@@ -36,23 +38,29 @@ const logout = () => {
 
 export const Header: FC = () => {
   const navigate = useNavigate();
+  const { isLogin } = useAuthContext();
+
   return (
     <SContainer>
       <div>
-      <SLink to={pathData.top}>Top</SLink>
-      <SLink to={pathData.home}>Home</SLink>
+        <SLink to={pathData.top}>Top</SLink>
+        <SLink to={pathData.home}>Home</SLink>
       </div>
       <div>
-      <DefaultButton onClick={() => login({ navigate })}>
-        ログイン
-      </DefaultButton>
-      <DefaultButton
-        onClick={() => {
-          logout();
-        }}
-      >
-        ログアウト
-      </DefaultButton>
+        {isLogin || (
+          <DefaultButton onClick={() => login({ navigate })}>
+            ログイン
+          </DefaultButton>
+        )}
+        {isLogin && (
+          <DefaultButton
+            onClick={() => {
+              logout();
+            }}
+          >
+            ログアウト
+          </DefaultButton>
+        )}
       </div>
     </SContainer>
   );

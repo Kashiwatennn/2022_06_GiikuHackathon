@@ -12,13 +12,14 @@ import { AddServise } from "../components/pages/AddService";
 export const ComponentRouter: FC = () => {
   const auth = getAuth();
   const { isLogin, setIsLogin } = useAuthContext();
+
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setIsLogin(true);
     } else {
-      setIsLogin(true);
+      setIsLogin(false);
     }
-    console.log(isLogin);
+    console.log("isLogin:" + isLogin);
   });
 
   return (
