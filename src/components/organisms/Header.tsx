@@ -7,22 +7,23 @@ import { signInWithPopup, signOut, UserCredential } from "firebase/auth";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { auth, provider } from "../../firebase";
 import { useAuthContext } from "../../store/AuthProvider";
+import { useUidContext } from "../../store/UidProvider";
+import { useDataContext } from "../../store/DataProvider";
 
-type propsType = {
+type loginProps = {
   navigate: NavigateFunction;
 };
 
-const login = (props: propsType) => {
+type logoutProps = {
+  setUid: React.Dispatch<React.SetStateAction<string>>;
+};
+
+const login = (props: loginProps) => {
   const { navigate } = props;
 
   signInWithPopup(auth, provider)
     .then((result: UserCredential) => {
       console.log("Googleアカウントでログインしました。");
-<<<<<<< Updated upstream
-      console.log(result.user.uid);
-=======
-      console.log(result.user.email);
->>>>>>> Stashed changes
       navigate(pathData.home);
     })
     .catch((error) => {
@@ -30,9 +31,11 @@ const login = (props: propsType) => {
     });
 };
 
-const logout = () => {
+const logout = (props: logoutProps) => {
+  const { setUid } = props;
   signOut(auth)
     .then(() => {
+      setUid("");
       console.log("ログアウトしました");
     })
     .catch((error) => {
@@ -43,13 +46,14 @@ const logout = () => {
 export const Header: FC = () => {
   const navigate = useNavigate();
   const { isLogin } = useAuthContext();
+  const { setData } = useDataContext();
+  const { setUid } = useUidContext();
 
   return (
     <SContainer>
-<<<<<<< Updated upstream
       <div>
         <SLink to={pathData.top}>Top</SLink>
-        <SLink to={pathData.home}>Home</SLink>
+        {isLogin && <SLink to={pathData.home}>Home</SLink>}
       </div>
       <div>
         {isLogin || (
@@ -60,31 +64,15 @@ export const Header: FC = () => {
         {isLogin && (
           <DefaultButton
             onClick={() => {
-              logout();
+              logout({ setUid });
+              setData({});
+              navigate(pathData.top);
             }}
           >
             ログアウト
           </DefaultButton>
         )}
       </div>
-=======
-      <SLink to={pathData.top}>Top</SLink>
-      <SLink to={pathData.home}>Home</SLink>
-      {isLogin || (
-        <DefaultButton onClick={() => login({ navigate })}>
-          ログイン
-        </DefaultButton>
-      )}
-      {isLogin && (
-        <DefaultButton
-          onClick={() => {
-            logout();
-          }}
-        >
-          ログアウト
-        </DefaultButton>
-      )}
->>>>>>> Stashed changes
     </SContainer>
   );
 };

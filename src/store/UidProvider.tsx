@@ -2,8 +2,8 @@ import React, { createContext, useContext, useState, FC } from "react";
 
 const UidContext = createContext(
   {} as {
-    uid: boolean;
-    setUid: React.Dispatch<React.SetStateAction<boolean>>;
+    uid: string;
+    setUid: React.Dispatch<React.SetStateAction<string>>;
   }
 );
 
@@ -13,7 +13,7 @@ type propsType = {
 
 export const UidProvider: FC<propsType> = (props) => {
   const { children } = props;
-  const [uid, setUid] = useState<boolean>(false);
+  const [uid, setUid] = useState<string>("");
   return (
     <UidContext.Provider value={{ uid, setUid }}>
       {children}
