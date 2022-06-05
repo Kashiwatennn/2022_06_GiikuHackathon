@@ -59,8 +59,10 @@ export const Email: FC<propsType> = (props) => {
   return (
     <SElement>
       <SFlexContainer>
-        <SMail>{data[0]}</SMail>
-        <DefaultButton onClick={() => deleteEmail()}>削除</DefaultButton>
+        <Sdelete>
+          <SMail>{data[0]}</SMail>
+          <DButton onClick={() => deleteEmail()}>削除</DButton>
+        </Sdelete>
       </SFlexContainer>
       <SService>
         {data.map((item: any, index: number) => {
@@ -82,13 +84,26 @@ const SFlexContainer = styled.div`
 `;
 
 const SService = styled.div`
-  margin-left: 30px;
+  margin-left: 50px;
+  font-size: 18px;
 `;
 
 const SMail = styled.div`
   font-weight: bold;
+  font-size: 23px;
 `;
 
 const SElement = styled.div`
   margin: bottom;
+`;
+
+const Sdelete = styled.div`
+  display: flex;
+  width: 250px;
+  justify-content: space-around;
+`; 
+
+const DButton = styled(DefaultButton)`
+  width: 55px;
+  height: 25px;
 `;
