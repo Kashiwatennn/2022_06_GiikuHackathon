@@ -12,6 +12,7 @@ import { useDataContext } from "../../store/DataProvider";
 
 type loginProps = {
   navigate: NavigateFunction;
+  setUid: React.Dispatch<React.SetStateAction<string>>;
 };
 
 type logoutProps = {
@@ -19,11 +20,13 @@ type logoutProps = {
 };
 
 const login = (props: loginProps) => {
-  const { navigate } = props;
+  const { navigate, setUid } = props;
 
   signInWithPopup(auth, provider)
     .then((result: UserCredential) => {
       console.log("Googleアカウントでログインしました。");
+      console.log(result.user.uid);
+      setUid(result.user.uid);
       navigate(pathData.home);
     })
     .catch((error) => {
@@ -57,7 +60,7 @@ export const Header: FC = () => {
       </div>
       <div>
         {isLogin || (
-          <DefaultButton onClick={() => login({ navigate })}>
+          <DefaultButton onClick={() => login({ navigate, setUid })}>
             ログイン
           </DefaultButton>
         )}
