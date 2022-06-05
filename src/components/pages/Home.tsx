@@ -39,16 +39,18 @@ export const Home = () => {
   if (isComplete) {
     return (
       <SContainer>
-        {data.map((item: any, index: number) => (
-          <Email data={item} key={index} id={index} />
-        ))}
-        <DefaultButton
-          onClick={() => {
-            navigate(pathData.addMail);
-          }}
-        >
-          メールアドレスの追加
-        </DefaultButton>
+        <SService>
+          {data.map((item: any, index: number) => (
+            <Email data={item} key={index} id={index} />
+          ))}
+          </SService>
+          <SButton
+            onClick={() => {
+              navigate(pathData.addMail);
+            }}
+          >
+            メールアドレスの追加
+        </SButton>
       </SContainer>
     );
   } else {
@@ -58,6 +60,20 @@ export const Home = () => {
 
 const SContainer = styled.div`
   display: flex;
+  /* flex-direction: column; */
+  /* align-items: center; */
+  justify-content: space-around;
+
+  gap: 40px; 
+`;
+
+const SService = styled.div`
+  display: flex;
   flex-direction: column;
-  gap: 40px;
+  justify-content: center;
+`;
+
+const SButton = styled(DefaultButton)`
+  width: 150px;
+  height: 70px;
 `;
