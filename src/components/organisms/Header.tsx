@@ -5,10 +5,12 @@ import { pathData } from "../../assets/pathData";
 import { DefaultButton } from "../atoms/DefaultButton";
 import { signInWithPopup, signOut, UserCredential } from "firebase/auth";
 import { NavigateFunction, useNavigate } from "react-router-dom";
-import { auth, provider } from "../../firebase";
+import { auth, db, provider } from "../../firebase";
 import { useAuthContext } from "../../store/AuthProvider";
 import { useUidContext } from "../../store/UidProvider";
 import { useDataContext } from "../../store/DataProvider";
+import { collection, getDocs } from "firebase/firestore";
+import { useIsCompleteContext } from "../../store/IsCompleteProvidr";
 
 type loginProps = {
   navigate: NavigateFunction;
@@ -17,21 +19,6 @@ type loginProps = {
 
 type logoutProps = {
   setUid: React.Dispatch<React.SetStateAction<string>>;
-};
-
-const login = (props: loginProps) => {
-  const { navigate, setUid } = props;
-
-  signInWithPopup(auth, provider)
-    .then((result: UserCredential) => {
-      console.log("Googleアカウントでログインしました。");
-      console.log(result.user.uid);
-      setUid(result.user.uid);
-      navigate(pathData.home);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
 };
 
 const logout = (props: logoutProps) => {
@@ -51,6 +38,43 @@ export const Header: FC = () => {
   const { isLogin } = useAuthContext();
   const { setData } = useDataContext();
   const { setUid } = useUidContext();
+  const { setIsComplete } = useIsCompleteContext();
+
+  const getData = async () => {
+    const querySnapshot = await getDocs(collection(db, "users"));
+    querySnapshot.forEach((doc) => {
+      const temp: any = doc.data();
+      const temp1 = Object.entries(temp.emails);
+      let temp2: any = [];
+      temp1.map((item: any, index) => {
+        const temp3 = Object.entries(item[1]);
+        let temp4: any = [];
+        temp3.map((item, index) => {
+          temp4[index] = item[1];
+        });
+        temp2[index] = temp4;
+      });
+      return setData(temp2);
+    });
+  };
+
+  const login = async (props: loginProps) => {
+    const { navigate, setUid } = props;
+
+    signInWithPopup(auth, provider)
+      .then((result: UserCredential) => {
+        console.log("Googleアカウントでログインしました。");
+        console.log(result.user.uid);
+        setUid(result.user.uid);
+        getData().then(() => {
+          setIsComplete(true);
+          navigate(pathData.home);
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <SContainer>

@@ -34,7 +34,7 @@ export const Home = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [isComplete]);
 
   if (isComplete) {
     return (
@@ -43,13 +43,13 @@ export const Home = () => {
           {data.map((item: any, index: number) => (
             <Email data={item} key={index} id={index} />
           ))}
-          </SService>
-          <SButton
-            onClick={() => {
-              navigate(pathData.addMail);
-            }}
-          >
-            メールアドレスの追加
+        </SService>
+        <SButton
+          onClick={() => {
+            navigate(pathData.addMail);
+          }}
+        >
+          メールアドレスの追加
         </SButton>
       </SContainer>
     );
@@ -64,7 +64,7 @@ const SContainer = styled.div`
   /* align-items: center; */
   justify-content: space-around;
 
-  gap: 40px; 
+  gap: 40px;
 `;
 
 const SService = styled.div`

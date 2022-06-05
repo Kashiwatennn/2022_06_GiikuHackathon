@@ -66,14 +66,13 @@ export const SetInitialState: FC<propsType> = ({ children }) => {
         console.log("ログインしているユーザーがいます");
         setIsLogin(true);
         setUid(user.uid);
-        getData().then(() => {
-          setIsComplete(true);
-        });
       } else {
         setIsLogin(false);
-        setIsComplete(true);
         console.log("ログインしているユーザーはいません");
       }
+    });
+    getData().then(() => {
+      setIsComplete(true);
     });
   }, []);
 

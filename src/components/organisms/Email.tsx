@@ -99,9 +99,9 @@ const SElement = styled.div`
 
 const Sdelete = styled.div`
   display: flex;
-  width: 250px;
+  width: 400px;
   justify-content: space-around;
-`; 
+`;
 
 const DButton = styled(DefaultButton)`
   width: 55px;
