@@ -47,7 +47,7 @@ export const Top = () => {
 };
 
 const SText = styled.div`
-  font-size: 40px;
+  font-size: 50px;
   
 `;
 
