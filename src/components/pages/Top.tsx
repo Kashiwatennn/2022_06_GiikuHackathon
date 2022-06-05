@@ -1,4 +1,5 @@
 import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
+import styled from "styled-components";
 import { db } from "../../firebase";
 import { useUidContext } from "../../store/UidProvider";
 
@@ -38,8 +39,17 @@ export const Top = () => {
   };
 
   return (
-    <>
-      <div>Melon Memoryへようこそ！</div>
-    </>
+    <SContainer>
+      <SText>Melon Memoryへようこそ！</SText>
+    </SContainer>
   );
 };
+
+const SText = styled.div`
+  font-size: 24px;
+`;
+
+const SContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
