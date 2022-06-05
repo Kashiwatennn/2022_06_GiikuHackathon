@@ -4,7 +4,7 @@ import { FC } from "react";
 export const Footer: FC = () => {
   return (
     <SComponentContainer>
-      &copy; 2022 Tsumugi,Yuta,Syoiti,Karen
+      &copy; 2022 Tsumugi,Yuta,Shoichi,Karen
     </SComponentContainer>
   );
 };
