@@ -25,14 +25,16 @@ export const AddMail: FC = () => {
     const path = "users/" + uid;
     let temp = or_data;
     const num = data.length;
-    temp.emails = Object.assign(or_data.emails, {
-      [num]: {
-        0: email,
-        1: service1,
-        2: service2,
-        3: service3,
-      },
-    });
+    if (!!temp !== false) {
+      temp.emails = Object.assign(or_data.emails, {
+        [num]: {
+          0: email,
+          1: service1,
+          2: service2,
+          3: service3,
+        },
+      });
+    }
     console.log(or_data);
     try {
       const refEmails = doc(db, path);
